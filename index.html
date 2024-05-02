@@ -14,7 +14,7 @@
     <title>Dashboard</title>
 	<style>
 		/* Popup container - can be anything you want */
-		.popup {
+		/* .popup {
 		  position: relative;
 		  display: inline-block;
 		  cursor: pointer;
@@ -22,10 +22,10 @@
 		  -moz-user-select: none;
 		  -ms-user-select: none;
 		  user-select: none;
-		}
+		} */
 		
 		/* The actual popup */
-		.popup .popuptext {
+		/* .popup .popuptext {
 		  visibility: hidden;
 		  width: 160px;
 		  background-color: #555;
@@ -38,10 +38,10 @@
 		  bottom: 125%;
 		  left: 50%;
 		  margin-left: -80px;
-		}
+		} */
 		
 		/* Popup arrow */
-		.popup .popuptext::after {
+		/* .popup .popuptext::after {
 		  content: "";
 		  position: absolute;
 		  top: 100%;
@@ -49,46 +49,50 @@
 		  margin-left: -5px;
 		  border-width: 5px;
 		  border-style: solid;
-		  border-color: #555 transparent transparent transparent;
-		}
+		  border-color: #555555a6 transparent transparent transparent;
+		} */
 		
 		/* Toggle this class - hide and show the popup */
-		.popup .show {
+		/* .popup .show {
 		  visibility: visible;
 		  -webkit-animation: fadeIn 1s;
 		  animation: fadeIn 1s;
-		}
+		} */
 
 		/* Toggle this class - hide and show the popup */
-		.popup .graphshow {
+		/* .popup .graphshow {
 		  visibility: visible;
 		  -webkit-animation: fadeIn 1s;
 		  animation: fadeIn 1s;
-		}
+		} */
 		
 		/* Add animation (fade in the popup) */
-		@-webkit-keyframes fadeIn {
+		/* @-webkit-keyframes fadeIn {
 		  from {opacity: 0;} 
 		  to {opacity: 1;}
-		}
+		} */
 		
-		@keyframes fadeIn {
+		/* @keyframes fadeIn {
 		  from {opacity: 0;}
 		  to {opacity:1 ;}
-		}
+		} */
 		</style>
+      <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
   <body>
     <!--   *** Page Wrapper Starts ***   -->
     <div class="page-wrapper">
-      <script>
+      <!-- <script>
         // When the user clicks on div, open the popup
         function myFunction() {
           var popup = document.getElementById("myChart");
           popup.classList.toggle("graphshow");
         }
-      </script>
+      </script> -->
 
       <!--   *** Top Bar Starts ***   -->
       <div class="top-bar">
@@ -127,6 +131,7 @@
       <!--   === Side Bar Starts ===   -->
       <aside class="side-bar">
         <!--   === Nav Bar Links Starts ===   -->
+
         <span class="menu-label">MENU</span>
         <ul class="navbar-links navbar-links-1">
           <li class="active">
@@ -212,32 +217,19 @@
           <div class="col-1">
             <!--   === Boxes Row Starts ===   -->
             <div class="boxes-row">
-              <div class="balance-box" onclick="myFunction()">
+              <div class="balance-box" >
                 <div class="subject-row" id="showGraph" >
                   <div class="text" >
-                    <h3>New Part Quote Captured percent.</h3>
+                    <h3>New Part Quote per.</h3>
                     <h1>60%<sub>percentage</sub></h1>
+                    <!--  Text for  trigger the modal -->
+                    <h1 data-toggle="modal" data-target="#lineChartModal">Detail</h1>
+                    <!--  Text for  trigger the modal -->
+            <!-- <h1 data-toggle="modal" data-target="#lineChartModal">Details</h1> -->
                   </div>
-                  <!-- <div class="icon">
-						<i class="fa-solid fa-arrow-down"></i>
-					</div> -->
                   <div class="icon">
-                    <!-- <i class="fa-solid fa-arrow-down"></i> -->
-                   <!-- <h1 id="showGraph">helloworld</h1> -->
-					<!-- <div class="popup" onclick="myFunction()"> -->
-						 <!-- <button class="button">Details</button> -->
 						 <i class="fa-solid fa-arrow-down"></i>
-						<!-- <span class="popuptext" id="myPopup">A Simple Popup!</span> -->
-						<!-- <canvas class="myChart"   id="myChart" width="800px" height="400px" style="background-color:white;"></canvas> Canvas for the graph -->
-						<div id="graphModal" class="modal" >
-							<div class="modal-content" style="background-color:rgb(165, 172, 187)">
-								<span class="close">&times;</span> <!-- Close button -->
-								<h2>Sales Report</h2>
-								<canvas id="myChart" width="400" height="200"></canvas> <!-- Canvas for the graph -->
-							</div>
-						</div>
-					<!-- </div> -->
-					<script src="pop_script.js"></script> <!-- Include JavaScript file -->
+						
                  
 				</div>
                 </div>
@@ -254,7 +246,7 @@
               </div>
 
               <div class="balance-box">
-                <div class="subject-row">
+                <div class="subject-row" id="secondShowGraph">
                   <div class="text">
                     <h3 class="active">Sales Revenue</h3>
                     <h1>$70,452<sub>(USD)</sub></h1>
@@ -714,45 +706,38 @@
       <!--   === Contents Section Ends ===   -->
     </div>
     <!--   *** Page Wrapper Ends ***   -->
+<!-- Modal -->
+<div class="modal fade" id="lineChartModal" tabindex="-1" role="dialog" aria-labelledby="lineChartModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="lineChartModalLabel">Line Chart Example</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Canvas for the chart -->
+        <canvas id="lineChart"></canvas>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
+<!-- Script to initialize the line chart -->
+<!-- <script>
+
+</script> -->
+<script src="saleChart/lineChart.js"></script>
     <!--   *** Link To Custom Script File ***   -->
-    <script type="text/javascript" src="script.js"></script>
-	<script>
-const xValues = ["January",
-"February",
-"March",
-"April",
-"May",
-"June",
-"July",
-"August",
-"September",
-"October",
-"November",
-"December",];
-const yValues = [70,80,65,19,9,29,40,21,94,4,75,90];
-
-new Chart("myChart", {
-  type: "line",
-  data: {
-    labels: xValues,
-    datasets: [{
-      label: "Sales monthly",
-      fill: false,
-      lineTension: 0,
-      backgroundColor: "#1f1d2a",
-      borderColor: "#ff9900",
-      data: yValues
-    }]
-  },
-  options: {
-    legend: {display: true},
-    scales: {
-      yAxes: [{ticks: {min: 0, max:100, text: 'sales report'}}],
-    }
-  }
-});
-</script>
+    <!-- <script type="text/javascript" src="script.js"></script> -->
+	
 
   </body>
 </html>
