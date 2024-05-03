@@ -377,6 +377,7 @@ ul.navbar-links li.active a .nav-text{
 	padding: 30px 25px;
 	color: var(--text-clr);
 	border-radius: 15px;
+	width: 37vw;
 }
 .boxes-row .balance-box .subject-row{
 	display: flex;
@@ -851,7 +852,7 @@ ul.navbar-links li.active a .nav-text{
 }
 @media(max-width: 668px){
 	.description .col-1 .boxes-row{
-		grid-template-columns: 1fr;
+		grid-template-columns:1fr;
 	}
 }
 @media(max-width: 568px){

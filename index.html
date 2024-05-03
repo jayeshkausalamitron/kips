@@ -216,14 +216,16 @@
           <!--   === Column 1 Starts ===   -->
           <div class="col-1">
             <!--   === Boxes Row Starts ===   -->
+           
             <div class="boxes-row">
               <div class="balance-box" >
+                <div data-toggle="modal" data-target="#lineChartModal">
                 <div class="subject-row" id="showGraph" >
                   <div class="text" >
                     <h3>New Part Quote per.</h3>
                     <h1>60%<sub>percentage</sub></h1>
                     <!--  Text for  trigger the modal -->
-                    <h1 data-toggle="modal" data-target="#lineChartModal">Detail</h1>
+                   
                     <!--  Text for  trigger the modal -->
             <!-- <h1 data-toggle="modal" data-target="#lineChartModal">Details</h1> -->
                   </div>
@@ -244,8 +246,10 @@
                   </div>
                 </div>
               </div>
+            </div>
 
               <div class="balance-box">
+                <div data-toggle="modal" data-target="#seconlineChartModal">
                 <div class="subject-row" id="secondShowGraph">
                   <div class="text">
                     <h3 class="active">Sales Revenue</h3>
@@ -265,10 +269,12 @@
                     ></div>
                   </div>
                 </div>
+                </div>
               </div>
 
               <div class="balance-box">
-                <div class="subject-row">
+                <div data-toggle="modal" data-target="#grossProfitChartModal">
+                <div class="subject-row"  id="grossProfitShowGraph">
                   <div class="text">
                     <h3>Gross Profit</h3>
                     <h1>$64,261<sub>(USD)</sub></h1>
@@ -287,10 +293,12 @@
                     ></div>
                   </div>
                 </div>
+                </div>
               </div>
 
               <div class="balance-box">
-                <div class="subject-row">
+                <div data-toggle="modal" data-target="#netProfitChartModal">
+                <div class="subject-row" id="netProfitShowGraph">
                   <div class="text">
                     <h3>Net Profit</h3>
                     <h1>$70,261<sub>(USD)</sub></h1>
@@ -309,9 +317,11 @@
                     ></div>
                   </div>
                 </div>
+                </div>
               </div>
 
               <div class="balance-box">
+                <div data-toggle="modal" data-target="#newPartQuoteChartModal">
                 <div class="subject-row">
                   <div class="text">
                     <h3>New Part Quotes</h3>
@@ -332,8 +342,10 @@
                   </div>
                 </div>
               </div>
+              </div>
 
               <div class="balance-box">
+                <div data-toggle="modal" data-target="#existingQuoteCompletedChartModal">
                 <div class="subject-row">
                   <div class="text">
                     <h3>Existing quotes completed</h3>
@@ -353,31 +365,11 @@
                     ></div>
                   </div>
                 </div>
-              </div>
-
-              <div class="balance-box">
-                <div class="subject-row">
-                  <div class="text">
-                    <h3>Existing quotes completed</h3>
-                    <h1>$34,261<sub>(USD)</sub></h1>
-                  </div>
-                  <div class="icon">
-                    <i class="fa-solid fa-arrow-down"></i>
-                  </div>
-                </div>
-                <div class="progress-row">
-                  <div class="subject">progress</div>
-                  <div class="progress-bar">
-                    <div
-                      class="progress-line"
-                      value="34%"
-                      style="max-width: 33%"
-                    ></div>
-                  </div>
                 </div>
               </div>
 
               <div class="balance-box">
+                <div data-toggle="modal" data-target="#dailyNumberOfPurchaseOrderChartModal">
                 <div class="subject-row">
                   <div class="text">
                     <h3>Daily number of purchase orders</h3>
@@ -397,9 +389,11 @@
                     ></div>
                   </div>
                 </div>
+                </div>
               </div>
 
               <div class="balance-box">
+                <div data-toggle="modal" data-target="#newCustomerQuotedChartModal">
                 <div class="subject-row">
                   <div class="text">
                     <h3>New Customers Quoted</h3>
@@ -418,6 +412,7 @@
                       style="max-width: 23%"
                     ></div>
                   </div>
+                </div>
                 </div>
               </div>
             </div>
@@ -711,7 +706,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="lineChartModalLabel">Line Chart Example</h5>
+        <h5 class="modal-title" id="lineChartModalLabel">New Part Quote Percentage</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -726,6 +721,177 @@
     </div>
   </div>
 </div>
+
+<!-- Sales Revenue -->
+<div class="modal fade" id="seconlineChartModal" tabindex="-1" role="dialog" aria-labelledby="lineChartModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="lineChartModalLabel">Sales Revenue</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Canvas for the chart -->
+        <canvas id="secondlineChart"></canvas>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Gross Point -->
+<div class="modal fade" id="grossProfitChartModal" tabindex="-1" role="dialog" aria-labelledby="lineChartModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="lineChartModalLabel">Gross Profit</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Canvas for the chart -->
+        <canvas id="grossProfitlineChart"></canvas>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Net Profit -->
+<div class="modal fade" id="netProfitChartModal" tabindex="-1" role="dialog" aria-labelledby="lineChartModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="lineChartModalLabel">Net Profit</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Canvas for the chart -->
+        <canvas id="netProfitlineChart"></canvas>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- New Part Quotes -->
+<div class="modal fade" id="newPartQuoteChartModal" tabindex="-1" role="dialog" aria-labelledby="lineChartModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="lineChartModalLabel">Net Part Quotes</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Canvas for the chart -->
+        <canvas id="newPartQuotelineChart"></canvas>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Existing quotes completed -->
+<div class="modal fade" id="existingQuoteCompletedChartModal" tabindex="-1" role="dialog" aria-labelledby="lineChartModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="lineChartModalLabel">Existing Quote completed</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Canvas for the chart -->
+        <canvas id="existingQuoteCompletedlineChart"></canvas>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- New Customer Quoted -->
+<div class="modal fade" id="newCustomerQuotedChartModal" tabindex="-1" role="dialog" aria-labelledby="lineChartModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="lineChartModalLabel">Existing Quote completed</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Canvas for the chart -->
+        <canvas id="newCustomerQuotelineChart"></canvas>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Daily number of purchase orders -->
+<div class="modal fade" id="dailyNumberOfPurchaseOrderChartModal" tabindex="-1" role="dialog" aria-labelledby="lineChartModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="lineChartModalLabel">Number of placed POS Daily</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Canvas for the chart -->
+        <canvas id="dailyNumberOfPurchaseOrderslineChart"></canvas>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Daily number of purchase orders -->
+<div class="modal fade" id="weeklyNumberOfPurchaseOrderChartModal" tabindex="-1" role="dialog" aria-labelledby="lineChartModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="lineChartModalLabel">Number of placed POS Daily</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Canvas for the chart -->
+        <canvas id="weeklyNumberOfPurchaseOrderslineChart"></canvas>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Bootstrap JS and Popper.js -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>

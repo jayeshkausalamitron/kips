@@ -9,6 +9,12 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Dashboard</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<!-- Chart.js -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
 </head>
 <body>
 <!--   *** Page Wrapper Starts ***   -->
@@ -167,9 +173,10 @@
 		<div class="boxes-row">
 
 			<div class="balance-box">
+				<div data-toggle="modal" data-target="#posdailyChartModal">
 				<div class="subject-row">
 					<div class="text">
-						<h3 class="active">Number of placed POs Daily</h3>
+						<h3 class="active">Number of placed POS Daily</h3>
 						<h1>$70,452<sub>(USD)</sub></h1>
 					</div>
 					<div class="icon">
@@ -182,10 +189,13 @@
 						<div class="progress-line" value="91%" style="max-width: 91%"></div>
 					</div>
 				</div>
+				</div>
 			</div>
 
 
 			<div class="balance-box">
+				<div data-toggle="modal" data-target="#posWeeklyChartModal">
+				
 				<div class="subject-row">
 					<div class="text">
 						<h3 class="active">Number of placed POs Weekly</h3>
@@ -201,9 +211,11 @@
 						<div class="progress-line" value="91%" style="max-width: 91%"></div>
 					</div>
 				</div>
+				</div>
 			</div>
 
 			<div class="balance-box">
+				<div data-toggle="modal" data-target="#posWeeklyChartModal">
 				<div class="subject-row">
 					<div class="text">
 						<h3 class="active">Number of placed POs Monthly</h3>
@@ -220,8 +232,10 @@
 					</div>
 				</div>
 			</div>
+			</div>
 
 			<div class="balance-box">
+				<div data-toggle="modal" data-target="#posyearlyChartModal">
 				<div class="subject-row">
 					<div class="text">
 						<h3 class="active">Number of placed POs Yearly</h3>
@@ -237,6 +251,7 @@
 						<div class="progress-line" value="91%" style="max-width: 91%"></div>
 					</div>
 				</div>
+			</div>
 			</div>
 			
 		</div>
@@ -319,9 +334,105 @@
 </div>
 <!--   *** Page Wrapper Ends ***   -->
 
+<!-- Pos Daily Chart Modal -->
+<div class="modal fade" id="posdailyChartModal" tabindex="-1" role="dialog" aria-labelledby="lineChartModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="lineChartModalLabel">Pos Daily Chart Modal </h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		  <!-- Canvas for the chart -->
+		  <canvas id="posdailylineChart"></canvas>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+  
+<!-- Pos Weekly Chart Modal -->
+<div class="modal fade" id="posWeeklyChartModal" tabindex="-1" role="dialog" aria-labelledby="lineChartModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="lineChartModalLabel">Pos Weekly Chart Modal </h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		  <!-- Canvas for the chart -->
+		  <canvas id="posWeeklylineChart"></canvas>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+  <!-- Pos Monthly Chart Modal -->
+<div class="modal fade" id="posmonthlyChartModal" tabindex="-1" role="dialog" aria-labelledby="lineChartModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="lineChartModalLabel">Pos Monthly Chart Modal </h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		  <!-- Canvas for the chart -->
+		  <canvas id="posmonthlylineChart"></canvas>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+    <!-- Pos yearly Chart Modal -->
+<div class="modal fade" id="posyearlyChartModal" tabindex="-1" role="dialog" aria-labelledby="lineChartModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="lineChartModalLabel">Pos yearly Chart Modal </h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		  <!-- Canvas for the chart -->
+		  <canvas id="posyearlylineChart"></canvas>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+
 
 
 <!--   *** Link To Custom Script File ***   -->
-<script type="text/javascript" src="script.js"></script>
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+<!-- Script to initialize the line chart -->
+<!-- <script>
+
+</script> -->
+<script src="saleChart/lineChart.js"></script>
+    <!--   *** Link To Custom Script File ***   -->
+	
+<!-- <script type="text/javascript" src="script.js"></script> -->
 </body>
 </html>
