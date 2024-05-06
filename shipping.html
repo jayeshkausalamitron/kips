@@ -204,7 +204,7 @@
 			</div>
 
 			<div class="balance-box">
-				<div data-toggle="modal" data-target="#manpowerHoursValueChartModal"></div>
+				<div data-toggle="modal" data-target="#manpowerHoursValueChartModal">
 				<div class="subject-row">
 					<div class="text">
 						<h3 class="active">Manpower hours Value in $</h3>
@@ -224,6 +224,7 @@
 			</div>
 
             <div class="balance-box">
+				<div data-toggle="modal" data-target="#manpowerWeeksValueChartModal">
 				<div class="subject-row">
 					<div class="text">
 						<h3 class="active">Manpower Weeks Value in $</h3>
@@ -239,9 +240,11 @@
 						<div class="progress-line" value="91%" style="max-width: 91%"></div>
 					</div>
 				</div>
+			    </div>
 			</div>
 
             <div class="balance-box">
+				<div data-toggle="modal" data-target="#manpowerMonthValueChartModal">
 				<div class="subject-row">
 					<div class="text">
 						<h3 class="active">Manpower Month Value in $</h3>
@@ -257,6 +260,7 @@
 						<div class="progress-line" value="91%" style="max-width: 91%"></div>
 					</div>
 				</div>
+			</div>
 			</div>			
 		</div>
 		<!--   === Boxes Row Ends ===   -->
@@ -603,6 +607,48 @@
 		<div class="modal-body">
 		  <!-- Canvas for the chart -->
 		  <canvas id="nmanpowerHoursValueChart"></canvas>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+    <!--Manpower Weeks Value in $-->
+<div class="modal fade" id="manpowerWeeksValueChartModal" tabindex="-1" role="dialog" aria-labelledby="lineChartModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="lineChartModalLabel">Manpower Weeks Value in $</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		  <!-- Canvas for the chart -->
+		  <canvas id="anpowerWeeksValueChart"></canvas>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+  <!--Manpower Weeks Value in $-->
+<div class="modal fade" id="manpowerMonthValueChartModal" tabindex="-1" role="dialog" aria-labelledby="lineChartModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="lineChartModalLabel">Manpower Month Value in $</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		  <!-- Canvas for the chart -->
+		  <canvas id="manpowerMonthValue"></canvas>
 		</div>
 		<div class="modal-footer">
 		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
