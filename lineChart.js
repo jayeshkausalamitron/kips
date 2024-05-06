@@ -779,3 +779,79 @@ $(document).ready(function() {
       }
     });
   });
+  $(document).ready(function() {
+    let ctx = document.getElementById('onTimeDeliveryPerChart').getContext('2d');
+    let lineChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000'],
+        datasets: [{
+          label: 'On-time delivery percentage',
+          data: [16, 12, 23, 54, 45, 56, 7, 28, 19, 50,],
+          borderColor: 'rgba(75, 192, 192, 1)',
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderWidth: 2,
+          fill: true
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  });
+  $(document).ready(function() {
+    let ctx = document.getElementById('laborCostPerPanelChart').getContext('2d');
+    let lineChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000'],
+        datasets: [{
+          label: 'Labor cost per panel Hours Value in $',
+          data: [16, 12, 23, 54, 45, 56, 7, 28, 19, 50,],
+          borderColor: 'rgba(75, 192, 192, 1)',
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderWidth: 2,
+          fill: true
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  });
+
+  $(document).ready(function() {
+    let ctx = document.getElementById('AvgPanelPriceChart').getContext('2d');
+    let lineChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000'],
+        datasets: [{
+          label: 'Average Panel price USA',
+          data: [16, 12, 23, 54, 45, 56, 7, 28, 19, 50,],
+          borderColor: 'rgba(75, 192, 192, 1)',
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderWidth: 2,
+          fill: true
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  });
