@@ -1,412 +1,479 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<!--   ***** Link To Custom Stylesheet *****   -->
-	<link rel="stylesheet" type="text/css" href="style.css">
+  <head>
+    <!--   ***** Link To Custom Stylesheet *****   -->
+    <link rel="stylesheet" type="text/css" href="style.css" />
 
-	<!-- *******  Font Awesome Icons Link  ******* -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+    <!-- *******  Font Awesome Icons Link  ******* -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Dashboard</title>
-	<style>
-		/* Popup container - can be anything you want */
-		.popup {
-		  position: relative;
-		  display: inline-block;
-		  cursor: pointer;
-		  -webkit-user-select: none;
-		  -moz-user-select: none;
-		  -ms-user-select: none;
-		  user-select: none;
-		}
-		
-		/* The actual popup */
-		.popup .popuptext {
-		  visibility: hidden;
-		  width: 160px;
-		  background-color: #555;
-		  color: #fff;
-		  text-align: center;
-		  border-radius: 6px;
-		  padding: 8px 0;
-		  position: absolute;
-		  z-index: 1;
-		  bottom: 125%;
-		  left: 50%;
-		  margin-left: -80px;
-		}
-		
-		/* Popup arrow */
-		.popup .popuptext::after {
-		  content: "";
-		  position: absolute;
-		  top: 100%;
-		  left: 50%;
-		  margin-left: -5px;
-		  border-width: 5px;
-		  border-style: solid;
-		  border-color: #555555a6 transparent transparent transparent;
-		}
-		
-		/* Toggle this class - hide and show the popup */
-		.popup .show {
-		  visibility: visible;
-		  -webkit-animation: fadeIn 1s;
-		  animation: fadeIn 1s;
-		}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <style>
+      /* Popup container - can be anything you want */
+      .popup {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
 
-		/* Toggle this class - hide and show the popup */
-		.popup .graphshow {
-		  visibility: visible;
-		  -webkit-animation: fadeIn 1s;
-		  animation: fadeIn 1s;
-		}
-		
-		/* Add animation (fade in the popup) */
-		@-webkit-keyframes fadeIn {
-		  from {opacity: 0;} 
-		  to {opacity: 1;}
-		}
-		
-		@keyframes fadeIn {
-		  from {opacity: 0;}
-		  to {opacity:1 ;}
-		}
-		</style>
-</head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-<body>
-<!--   *** Page Wrapper Starts ***   -->
-<div class="page-wrapper">
-	
-<!--   *** Top Bar Starts ***   -->
-<div class="top-bar">
-	<div class="top-bar-left">
-		<div class="hamburger-btn">
-			<span></span>
-			<span></span>
-			<span></span>
-		</div>
-		<!-- <div class="logo">
+      /* The actual popup */
+      .popup .popuptext {
+        visibility: hidden;
+        width: 160px;
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 8px 0;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%;
+        left: 50%;
+        margin-left: -80px;
+      }
+
+      /* Popup arrow */
+      .popup .popuptext::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #555555a6 transparent transparent transparent;
+      }
+
+      /* Toggle this class - hide and show the popup */
+      .popup .show {
+        visibility: visible;
+        -webkit-animation: fadeIn 1s;
+        animation: fadeIn 1s;
+      }
+
+      /* Toggle this class - hide and show the popup */
+      .popup .graphshow {
+        visibility: visible;
+        -webkit-animation: fadeIn 1s;
+        animation: fadeIn 1s;
+      }
+
+      /* Add animation (fade in the popup) */
+      @-webkit-keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+	     <!-- Bootstrap CSS -->
+		 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		 <!-- Chart.js -->
+		 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+		 </head>
+		 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  </head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  <body>
+    <!--   *** Page Wrapper Starts ***   -->
+    <div class="page-wrapper">
+      <!--   *** Top Bar Starts ***   -->
+      <div class="top-bar">
+        <div class="top-bar-left">
+          <div class="hamburger-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <!-- <div class="logo">
 			<img src="images/logo.png">
 		</div> -->
-	</div>
+        </div>
 
-	<div class="search-box">
-		<input type="text" class="input-box" placeholder="Search...">
-		<span class="search-btn">
-			<i class="fa-solid fa-search"></i>
-		</span>
-	</div>
+        <div class="search-box">
+          <input type="text" class="input-box" placeholder="Search..." />
+          <span class="search-btn">
+            <i class="fa-solid fa-search"></i>
+          </span>
+        </div>
 
-	<div class="top-bar-right">
-		<div class="mode-switch">
-			<i class="fa-solid fa-moon"></i>
-		</div>
-		<div class="notifications">
-			<i class="fa-solid fa-bell"></i>
-		</div>
-		<!-- <div class="profile">
+        <div class="top-bar-right">
+          <div class="mode-switch">
+            <i class="fa-solid fa-moon"></i>
+          </div>
+          <div class="notifications">
+            <i class="fa-solid fa-bell"></i>
+          </div>
+          <!-- <div class="profile">
 			<img src="images/profile-img.jpg">
 		</div> -->
-	</div>
-</div>
-<!--   *** Top Bar Ends ***   -->
+        </div>
+      </div>
+      <!--   *** Top Bar Ends ***   -->
 
-<!--   === Side Bar Starts ===   -->
-<aside class="side-bar">
-	<!--   === Nav Bar Links Starts ===   -->
-	<span class="menu-label">MENU</span>
-	<ul class="navbar-links navbar-links-1">
-		<li >
-			<a href="./index.html">
-				<span class="nav-icon">
-					<i class="fa-solid fa-house"></i>
-				</span>
-				<span class="nav-text">Sales</span>
-			</a>
-		</li>
-		<li class="active">
-			<a class="#">
-				<span class="nav-icon">
-					<i class="fa-solid fa-tasks"></i>
-				</span>
-				<span class="nav-text">Product</span>
-			</a>
-		</li>
-		<li>
-			<a href="./quality.html">
-				<span class="nav-icon">
-					<i class="fa-solid fa-user"></i>
-				</span>
-				<span class="nav-text">Quality</span>
-			</a>
-		</li>
-		<li>
-			<a href="./purchasing.html">
-				<span class="nav-icon">
-					<i class="fa-solid fa-bell"></i>
-				</span>
-				<span class="nav-text">Purchasing</span>
-			</a>
-		</li>
-		<li>
-			<a href="./shipping.html">
-				<span class="nav-icon">
-					<i class="fa-solid fa-chart-line"></i>
-				</span>
-				<span class="nav-text">Shipping</span>
-			</a>
-		</li>
-	</ul>
-	<span class="line"></span>
-	<span class="menu-label">PREFERENCES</span>
-	<ul class="navbar-links navbar-links-2">
-		<li>
-			<a href="#">
-				<span class="nav-icon">
-					<i class="fa-solid fa-file"></i>
-				</span>
-				<span class="nav-text">Portfolio</span>
-			</a>
-		</li>
-		<li>
-			<a href="#">
-				<span class="nav-icon">
-					<i class="fa-solid fa-pen"></i>
-				</span>
-				<span class="nav-text">History</span>
-			</a>
-		</li>
-		<li>
-			<a href="#">
-				<span class="nav-icon">
-					<i class="fa-solid fa-users"></i>
-				</span>
-				<span class="nav-text">People & Teams</span>
-			</a>
-		</li>
-		<li>
-			<a href="#">
-				<span class="nav-icon">
-					<i class="fa-solid fa-question"></i>
-				</span>
-				<span class="nav-text">Help & Center</span>
-			</a>
-		</li>
-	</ul>
-	<!--   === Nav Bar Links Ends ===   -->
-	<!--   === Side Bar Footer Starts ===   -->
-	<div class="sidebar-footer">
-		<div class="settings">
-			<span class="gear-icon">
-				<i class="fa-solid fa-gear"></i>
-			</span>
-			<span class="text">Settings</span>
-		</div>
-		<div class="logoutBtn">
-			<span class="logout-icon">
-				<i class="fa-solid fa-right-from-bracket"></i>
-			</span>
-			<span class="text">Logout</span>
-		</div>
-	</div>
-	<!--   === Side Bar Footer Ends ===   -->
-</aside>
-<!--   === Side Bar Ends ===   -->
+      <!--   === Side Bar Starts ===   -->
+      <aside class="side-bar">
+        <!--   === Nav Bar Links Starts ===   -->
+        <span class="menu-label">MENU</span>
+        <ul class="navbar-links navbar-links-1">
+          <li>
+            <a href="./index.html">
+              <span class="nav-icon">
+                <i class="fa-solid fa-house"></i>
+              </span>
+              <span class="nav-text">Sales</span>
+            </a>
+          </li>
+          <li class="active">
+            <a class="#">
+              <span class="nav-icon">
+                <i class="fa-solid fa-tasks"></i>
+              </span>
+              <span class="nav-text">Product</span>
+            </a>
+          </li>
+          <li>
+            <a href="./quality.html">
+              <span class="nav-icon">
+                <i class="fa-solid fa-user"></i>
+              </span>
+              <span class="nav-text">Quality</span>
+            </a>
+          </li>
+          <li>
+            <a href="./purchasing.html">
+              <span class="nav-icon">
+                <i class="fa-solid fa-bell"></i>
+              </span>
+              <span class="nav-text">Purchasing</span>
+            </a>
+          </li>
+          <li>
+            <a href="./shipping.html">
+              <span class="nav-icon">
+                <i class="fa-solid fa-chart-line"></i>
+              </span>
+              <span class="nav-text">Shipping</span>
+            </a>
+          </li>
+        </ul>
+        <span class="line"></span>
+        <span class="menu-label">PREFERENCES</span>
+        <ul class="navbar-links navbar-links-2">
+          <li>
+            <a href="#">
+              <span class="nav-icon">
+                <i class="fa-solid fa-file"></i>
+              </span>
+              <span class="nav-text">Portfolio</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="nav-icon">
+                <i class="fa-solid fa-pen"></i>
+              </span>
+              <span class="nav-text">History</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="nav-icon">
+                <i class="fa-solid fa-users"></i>
+              </span>
+              <span class="nav-text">People & Teams</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="nav-icon">
+                <i class="fa-solid fa-question"></i>
+              </span>
+              <span class="nav-text">Help & Center</span>
+            </a>
+          </li>
+        </ul>
+        <!--   === Nav Bar Links Ends ===   -->
+        <!--   === Side Bar Footer Starts ===   -->
+        <div class="sidebar-footer">
+          <div class="settings">
+            <span class="gear-icon">
+              <i class="fa-solid fa-gear"></i>
+            </span>
+            <span class="text">Settings</span>
+          </div>
+          <div class="logoutBtn">
+            <span class="logout-icon">
+              <i class="fa-solid fa-right-from-bracket"></i>
+            </span>
+            <span class="text">Logout</span>
+          </div>
+        </div>
+        <!--   === Side Bar Footer Ends ===   -->
+      </aside>
+      <!--   === Side Bar Ends ===   -->
 
-<!--   === Contents Section Starts ===   -->
-<div class="contents">
-	<!--   === Panel Bar Starts ===   -->
-	<div class="panel-bar">
-		<div class="row-1">
-			<h1><b>Product</b></h1>
-		</div>
-		<!-- <div class="row-2">
+      <!--   === Contents Section Starts ===   -->
+      <div class="contents">
+        <!--   === Panel Bar Starts ===   -->
+        <div class="panel-bar">
+          <div class="row-1">
+            <h1><b>Product</b></h1>
+          </div>
+          <!-- <div class="row-2">
 			<a href="#" class="active">Overwiew</a> -->
-			<!-- <a href="#">Products</a>
+          <!-- <a href="#">Products</a>
 			<a href="#">Total </a>
 			<a href="#">Perchases</a> -->
-		<!-- </div> -->
-	</div>
-	<!--   === Panel Bar Ends ===   -->
-	<!--   === Description Starts ===   -->
-	<div class="description">
-		<!--   === Column 1 Starts ===   -->
-		<div class="col-1">
-		<!--   === Boxes Row Starts ===   -->
-		<div class="boxes-row">
-
-			<div class="balance-box">
-				<div class="subject-row"  >
-					<div class="text">
-						<h3>On-time delivery percentage</h3>
-						<h1>30%<sub>percentage</sub></h1>
-					</div>
+          <!-- </div> -->
+        </div>
+        <!--   === Panel Bar Ends ===   -->
+        <!--   === Description Starts ===   -->
+        <div class="description">
+          <!--   === Column 1 Starts ===   -->
+          <div class="col-1">
+            <!--   === Boxes Row Starts ===   -->
+            <div class="boxes-row">
+              <div class="balance-box">
+				<div data-toggle="modal" data-target="#onTimeDeliveryPerChartModal">
+                <div class="subject-row">
+                  <div class="text">
+                    <h3>On-time delivery percentage</h3>
+                    <h1>30%<sub>percentage</sub></h1>
+                  </div>
+                </div>
+				
 			</div>
+              </div>
+
+              <div class="balance-box">
+                <div data-toggle="modal" data-target="#avgLeadTimeForReleaseChartModal">
+                  <div class="subject-row">
+                    <div class="text">
+                      <h3>Average lead-time for release</h3>
+                      <h1>3600<sub>Hours</sub></h1>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="balance-box">
+				<div data-toggle="modal" data-target="#laborCostPerPanelChartModal">
+                <div class="subject-row" id="showGraph">
+                  <div class="text">
+                    <h3 class="active">
+                      Labor cost per panel Hours Value in $
+                    </h3>
+                    <h1>$23,452<sub>(USD)</sub></h1>
+                  </div>
+                  <div class="icon">
+                    <i class="fa-solid fa-arrow-up"></i>
+                  </div>
+                </div>
+                <div class="progress-row">
+                  <div class="subject">progress</div>
+                  <div class="progress-bar">
+                    <div
+                      class="progress-line"
+                      value="23%"
+                      style="max-width: 23%"
+                    ></div>
+                  </div>
+                </div>
+			    </div>
+              </div>
+
+              <div class="balance-box">
+				<div data-toggle="modal" data-target="#laborHourPerPanelChartModal">
+                
+                <div class="subject-row">
+                  <div class="text">
+                    <h3>Labor hours per panel Hours Value in $</h3>
+                    <h1>$50,261<sub>(USD)</sub></h1>
+                  </div>
+                  <div class="icon">
+                    <i class="fa-solid fa-arrow-down"></i>
+                  </div>
+                </div>
+                <div class="progress-row">
+                  <div class="subject">progress</div>
+                  <div class="progress-bar">
+                    <div
+                      class="progress-line"
+                      value="53%"
+                      style="max-width: 53%"
+                    ></div>
+                  </div>
+                </div>
+				</div>
+              </div>
+
+              <div class="balance-box">
+				<div data-toggle="modal" data-target="#overTimePerChartModal">
+                <div class="subject-row">
+                  <div class="text">
+                    <h3>Overtime percentage</h3>
+                    <h1>30%<sub>percentage</sub></h1>
+                  </div>
+                  <div class="icon">
+                    <i class="fa-solid fa-arrow-down"></i>
+                  </div>
+                </div>
+                <div class="progress-row">
+                  <div class="subject">progress</div>
+                  <div class="progress-bar">
+                    <div
+                      class="progress-line"
+                      value="30%"
+                      style="max-width: 30%"
+                    ></div>
+                  </div>
+                </div>
 			</div>
+              </div>
 
-            <div class="balance-box">
-				<div class="subject-row">
-					<div class="text">
-						<h3>Average lead-time for release </h3>
-						<h1>3600<sub>Hours</sub></h1>
-					</div>
-				</div>
+              <div class="balance-box">
+				<div data-toggle="modal" data-target="#panelPerMonthCountValueChartModal">
+                <div class="subject-row">
+                  <div class="text">
+                    <h3>Panels per month Number count Value in $</h3>
+                    <h1>$10,261<sub>(USD)</sub></h1>
+                  </div>
+                  <div class="icon">
+                    <i class="fa-solid fa-arrow-down"></i>
+                  </div>
+                </div>
+                <div class="progress-row">
+                  <div class="subject">progress</div>
+                  <div class="progress-bar">
+                    <div
+                      class="progress-line"
+                      value="13%"
+                      style="max-width: 13%"
+                    ></div>
+                  </div>
+                </div>
 			</div>
+              </div>
 
-			<div class="balance-box">
-				<div class="subject-row" id="showGraph">
-					<div class="text">
-						<h3 class="active">Labor cost per panel Hours Value in $</h3>
-						<h1>$23,452<sub>(USD)</sub></h1>
-					</div>
-					<div class="icon">
-						<i class="fa-solid fa-arrow-up"></i>
-					</div>
-				</div>
-				<div class="progress-row">
-					<div class="subject">progress</div>
-					<div class="progress-bar">
-						<div class="progress-line" value="23%" style="max-width: 23%"></div>
-					</div>
-				</div>
+              <div class="balance-box">
+				<div data-toggle="modal" data-target="#squrePerMonthChartModal">
+                <div class="subject-row">
+                  <div class="text">
+                    <h3>Panel sq/ft per month</h3>
+                    <h1>2345<sub></sub></h1>
+                  </div>
+                  <div class="icon">
+                    <i class="fa-solid fa-arrow-down"></i>
+                  </div>
+                </div>
+                <div class="progress-row">
+                  <div class="subject">progress</div>
+                  <div class="progress-bar">
+                    <div
+                      class="progress-line"
+                      value="23%"
+                      style="max-width: 23%"
+                    ></div>
+                  </div>
+                </div>
+			    </div>
+              </div>
+
+              <div class="balance-box">
+				<div data-toggle="modal" data-target="#totalAvgPanelPriceChartModal">
+                <div class="subject-row">
+                  <div class="text">
+                    <h3>Total average Panel price Value in $</h3>
+                    <h1>$4,261<sub>(USD)</sub></h1>
+                  </div>
+                  <div class="icon">
+                    <i class="fa-solid fa-arrow-down"></i>
+                  </div>
+                </div>
+                <div class="progress-row">
+                  <div class="subject">progress</div>
+                  <div class="progress-bar">
+                    <div
+                      class="progress-line"
+                      value="4%"
+                      style="max-width: 4%"
+                    ></div>
+                  </div>
+                </div>
 			</div>
+              </div>
 
-
-			<div class="balance-box">
-				<div class="subject-row">
-					<div class="text">
-						<h3>Labor hours per panel   Hours   Value in $</h3>
-						<h1>$50,261<sub>(USD)</sub></h1>
-					</div>
-					<div class="icon">
-						<i class="fa-solid fa-arrow-down"></i>
-					</div>
-				</div>
-				<div class="progress-row">
-					<div class="subject">progress</div>
-					<div class="progress-bar">
-						<div class="progress-line" value="53%" style="max-width: 53%"></div>
-					</div>
-				</div>
+              <div class="balance-box">
+				<div data-toggle="modal" data-target="#AvgPanelPriceUSAChartModal">
+                <div class="subject-row">
+                  <div class="text">
+                    <h3>Average Panel price USA</h3>
+                    <h1>$64,261<sub>(USD)</sub></h1>
+                  </div>
+                  <div class="icon">
+                    <i class="fa-solid fa-arrow-down"></i>
+                  </div>
+                </div>
+                <div class="progress-row">
+                  <div class="subject">progress</div>
+                  <div class="progress-bar">
+                    <div
+                      class="progress-line"
+                      value="64%"
+                      style="max-width: 63%"
+                    ></div>
+                  </div>
+                </div>
 			</div>
+              </div>
 
-			<div class="balance-box">
-				<div class="subject-row">
-					<div class="text">
-						<h3>Overtime percentage </h3>
-						<h1>30%<sub>percentage</sub></h1>
-					</div>
-					<div class="icon">
-						<i class="fa-solid fa-arrow-down"></i>
-					</div>
-				</div>
-				<div class="progress-row">
-					<div class="subject">progress</div>
-					<div class="progress-bar">
-						<div class="progress-line" value="30%" style="max-width: 30%"></div>
-					</div>
-				</div>
+              <div class="balance-box">
+				<div data-toggle="modal" data-target="#AvgCyclePriceUSAChartModal">
+                <div class="subject-row">
+                  <div class="text">
+                    <h3>Average cycle time by layer (floor to stock)</h3>
+                    <h1>2610<sub>(number)</sub></h1>
+                  </div>
+                  <div class="icon">
+                    <i class="fa-solid fa-arrow-down"></i>
+                  </div>
+                </div>
+                <div class="progress-row">
+                  <div class="subject">progress</div>
+                  <div class="progress-bar">
+                    <div
+                      class="progress-line"
+                      value="80%"
+                      style="max-width: 80%"
+                    ></div>
+                  </div>
+                </div>
 			</div>
-
-			<div class="balance-box">
-				<div class="subject-row">
-					<div class="text">
-						<h3>Panels per month Number count Value in $</h3>
-						<h1>$10,261<sub>(USD)</sub></h1>
-					</div>
-					<div class="icon">
-						<i class="fa-solid fa-arrow-down"></i>
-					</div>
-				</div>
-				<div class="progress-row">
-					<div class="subject">progress</div>
-					<div class="progress-bar">
-						<div class="progress-line" value="13%" style="max-width: 13%"></div>
-					</div>
-				</div>
-			</div>
-
-			<div class="balance-box">
-				<div class="subject-row">
-					<div class="text">
-						<h3>Panel sq/ft per month</h3>
-						<h1>2345<sub></sub></h1>
-					</div>
-					<div class="icon">
-						<i class="fa-solid fa-arrow-down"></i>
-					</div>
-				</div>
-				<div class="progress-row">
-					<div class="subject">progress</div>
-					<div class="progress-bar">
-						<div class="progress-line" value="23%" style="max-width: 23%"></div>
-					</div>
-				</div>
-			</div>
-
-			<div class="balance-box">
-				<div class="subject-row">
-					<div class="text">
-						<h3>Total average Panel price Value in $</h3>
-						<h1>$4,261<sub>(USD)</sub></h1>
-					</div>
-					<div class="icon">
-						<i class="fa-solid fa-arrow-down"></i>
-					</div>
-				</div>
-				<div class="progress-row">
-					<div class="subject">progress</div>
-					<div class="progress-bar">
-						<div class="progress-line" value="4%" style="max-width: 4%"></div>
-					</div>
-				</div>
-			</div>
-
-			<div class="balance-box">
-				<div class="subject-row">
-					<div class="text">
-						<h3>Average Panel price USA  </h3>
-						<h1>$64,261<sub>(USD)</sub></h1>
-					</div>
-					<div class="icon">
-						<i class="fa-solid fa-arrow-down"></i>
-					</div>
-				</div>
-				<div class="progress-row">
-					<div class="subject">progress</div>
-					<div class="progress-bar">
-						<div class="progress-line" value="64%" style="max-width: 63%"></div>
-					</div>
-				</div>
-			</div>
-
-			<div class="balance-box">
-				<div class="subject-row">
-					<div class="text">
-						<h3>Average cycle time by layer (floor to stock)</h3>
-						<h1>2610<sub>(number)</sub></h1>
-					</div>
-					<div class="icon">
-						<i class="fa-solid fa-arrow-down"></i>
-					</div>
-				</div>
-				<div class="progress-row">
-					<div class="subject">progress</div>
-					<div class="progress-bar">
-						<div class="progress-line" value="80%" style="max-width: 80%"></div>
-					</div>
-				</div>
-			</div>
-
-		
-			
-		</div>
-		<!--   === Boxes Row Ends ===   -->
-		<!--   === Analytics Chart Starts ===   -->
-		<!-- <div class="chart">
+              </div>
+            </div>
+            <!--   === Boxes Row Ends ===   -->
+            <!--   === Analytics Chart Starts ===   -->
+            <!-- <div class="chart">
 			<div class="chart-header">
 				<h2>Sales Revenue Analytics</h2>
 				<input type="month" class="date" value="2023-12">
@@ -438,11 +505,11 @@
 				</section>
 			</div>
 		</div> -->
-		<!--   === Analytics Chart Ends ===   -->
-		</div>
-		<!--   === Existing quotes completed  ===   -->
-		<!-- <div class="col-2"> -->
-			<!-- <div class="top-products">
+            <!--   === Analytics Chart Ends ===   -->
+          </div>
+          <!--   === Existing quotes completed  ===   -->
+          <!-- <div class="col-2"> -->
+          <!-- <div class="top-products">
 				<header class="products-header">
 					<h1>New Part Quotes </h1>
 				</header>
@@ -653,9 +720,9 @@
 
 				</div>
 			</div> -->
-			<!--   === Top Products Ends ===   -->
-			<!--   === Total Balance Card Starts ===   -->
-			<!-- <div class="balance-card">
+          <!--   === Top Products Ends ===   -->
+          <!--   === Total Balance Card Starts ===   -->
+          <!-- <div class="balance-card">
 				<div class="balance-card-top">
 					<div class="text">
 						<h3>Total Income</h3>
@@ -680,20 +747,220 @@
 					</button>
 				</div>
 			</div>  -->
-			<!--   === Total Balance Card Ends ===  
+          <!--   === Total Balance Card Ends ===  
 		</div> -->
-		<!--   === Column 2 Ends ===   -->
+          <!--   === Column 2 Ends ===   -->
+        </div>
+        <!--   === Description Ends ===   -->
+      </div>
+      <!--   === Contents Section Ends ===   -->
+    </div>
+    <!--   *** Page Wrapper Ends ***   -->
+
+	<!-- avgLeadTimeForRelease -->
+<div class="modal fade" id="avgLeadTimeForReleaseChartModal" tabindex="-1" role="dialog" aria-labelledby="lineChartModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="lineChartModalLabel">Average lead-time for release</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		  <!-- Canvas for the chart -->
+		  <canvas id="avgSlineChart"></canvas>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		</div>
+	  </div>
 	</div>
-	<!--   === Description Ends ===   -->
-</div>
-<!--   === Contents Section Ends ===   -->
+  </div>
 
-</div>
-<!--   *** Page Wrapper Ends ***   -->
+  	<!-- Labor hours per panel Hours Value in $ -->
+<div class="modal fade" id="labourHoursPerPanelChartModal" tabindex="-1" role="dialog" aria-labelledby="lineChartModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="lineChartModalLabel">Labor hours per panel Hours Value in $</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		  <!-- Canvas for the chart -->
+		  <canvas id="laborhoursperpanelHoursValuelineChart"></canvas>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+
+  	<!-- avgLeadTimeForRelease -->
+<div class="modal fade" id="laborHourPerPanelChartModal" tabindex="-1" role="dialog" aria-labelledby="lineChartModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="lineChartModalLabel">Labor cost per panel Hours Value in $</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		  <!-- Canvas for the chart -->
+		  <canvas id="laborHourPerPanellineChart"></canvas>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+    	<!-- avgLeadTimeForRelease -->
+<div class="modal fade" id="overTimePerChartModal" tabindex="-1" role="dialog" aria-labelledby="lineChartModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="lineChartModalLabel">Overtime percentage</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		  <!-- Canvas for the chart -->
+		  <canvas id="overTimePerlineChart"></canvas>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+
+      	<!-- Panels per month Number count Value in $ -->
+<div class="modal fade" id="panelPerMonthCountValueChartModal" tabindex="-1" role="dialog" aria-labelledby="lineChartModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="lineChartModalLabel">Panels per month Number count Value in $</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		  <!-- Canvas for the chart -->
+		  <canvas id="panelPerMonthCountValue"></canvas>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+  <!--Panel sq/ft per month -->
+<div class="modal fade" id="squrePerMonthChartModal" tabindex="-1" role="dialog" aria-labelledby="lineChartModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="lineChartModalLabel">Panel sq/ft per month</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		  <!-- Canvas for the chart -->
+		  <canvas id="squrePerMonthCountValue"></canvas>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+
+<!--Total average Panel price Value in $ -->
+<div class="modal fade" id="totalAvgPanelPriceChartModal" tabindex="-1" role="dialog" aria-labelledby="lineChartModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="lineChartModalLabel">Total average Panel price Value in $</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		  <!-- Canvas for the chart -->
+		  <canvas id="totalAvgPanelPriceChart"></canvas>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+  <!--Total average Panel price Value in $ -->
+<div class="modal fade" id="AvgPanelPriceUSAChartModal" tabindex="-1" role="dialog" aria-labelledby="lineChartModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="lineChartModalLabel">Average Panel price USA</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		  <!-- Canvas for the chart -->
+		  <canvas id="AvgPanelPriceChart"></canvas>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+  <!--Average cycle time by layer (floor to stock)-->
+<div class="modal fade" id="AvgCyclePriceUSAChartModal" tabindex="-1" role="dialog" aria-labelledby="lineChartModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="lineChartModalLabel">Average cycle time by layer (floor to stock)</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		  <!-- Canvas for the chart -->
+		  <canvas id="avgCycleTimebyLayerChart"></canvas>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		</div>
+	  </div>
+	</div>
+  </div>
 
 
 
-<!--   *** Link To Custom Script File ***   -->
-<script type="text/javascript" src="script.js"></script>
-</body>
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+<!-- Script to initialize the line chart -->
+<!-- <script>
+
+</script> -->
+<script src="saleChart/lineChart.js"></script>
+    <!--   *** Link To Custom Script File ***   -->
+    <!-- <script type="text/javascript" src="script.js"></script> -->
+  </body>
 </html>
